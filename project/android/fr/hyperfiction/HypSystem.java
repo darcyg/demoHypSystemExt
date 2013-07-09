@@ -195,7 +195,7 @@ class HypSystem{
 					sRes = "xhdpi";
 					break;
 
-				case DisplayMetrics.DENSITY_XXHIGH :
+				case 0x000001e0://DisplayMetrics.DENSITY_XXHIGH :
 					sRes = "xxhdpi";
 					break;
 
@@ -290,8 +290,9 @@ class HypSystem{
 				new Runnable(){
 	                @Override
 						public void run() {
-						GameActivity.getInstance( ).getWindow( ).addFlags( android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-						GameActivity.getInstance( ).getMainView( ).setKeepScreenOn( true );
+						//GameActivity.getInstance( ).getWindow( ).addFlags( android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+						//GameActivity.getInstance( ).getMainView( ).setKeepScreenOn( true );
+						GameActivity.getInstance( ).getWindow( ).setFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON, android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 					}
 
 				}
@@ -308,7 +309,8 @@ class HypSystem{
 			trace("lightsOut :: "+uiHider);
 
 			if( android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.HONEYCOMB )
-               	GameActivity.getMainView( ).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+               	//GameActivity.getMainView( ).setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+               	GameActivity.getInstance( ).getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 
                /*
 			GameActivity.getInstance( ).runOnUiThread(

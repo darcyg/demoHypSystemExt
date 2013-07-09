@@ -302,15 +302,15 @@ class NativeMirror{
 						var res : Dynamic = null;
 
 					//For CPP		
-						if( $(bCPP) ){
+						if( $v{bCPP} ){
 							 Sys.println('[CPP] ------------------------------------------------');
-							 Sys.println('\tLIBRARY 		: '+$(sFull_class_name));
-							 Sys.println('\tMETHOD 		: '+$(sMethod_name));
+							 Sys.println('\tLIBRARY 		: '+$v{sFull_class_name});
+							 Sys.println('\tMETHOD 		: '+$v{sMethod_name});
 							if( $field == null ){
 								#if verbose
 								Sys.println('CPP Method not yet created, lets create it...');
 								#end
-								$field = cpp.Lib.load( $(sFull_class_name) , $(sMethod_name) , $(count) );
+								$field = cpp.Lib.load( $v{sFull_class_name} , $v{sMethod_name} , $v{count} );
 							}else{
 								#if verbose
 								Sys.println('>> CPP Method already created');
@@ -325,13 +325,13 @@ class NativeMirror{
 					
 					//For JNI 
 						
-						if( $(bJNI) ){
+						if( $v{bJNI} ){
 							#if android
 							if( $field == null ){
-								if( $(bStatic) )
-									$field = nme.JNI.createStaticMethod( $(sJNI_class_name) , $(sMethodName) , $(sJNI_signature) );
+								if( $v{bStatic} )
+									$field = nme.JNI.createStaticMethod( $v{sJNI_class_name} , $v{sMethodName} , $v{sJNI_signature} );
 								else
-									$field = nme.JNI.createMemberMethod( $(sJNI_class_name) , $(sMethodName) , $(sJNI_signature) );
+									$field = nme.JNI.createMemberMethod( $v{sJNI_class_name} , $v{sMethodName} , $v{sJNI_signature} );
 							
 								if( $field == null )
 									throw new nme.errors.Error("Error creation failed");
