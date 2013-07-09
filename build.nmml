@@ -23,6 +23,8 @@
 	<haxelib name="actuate" />
 	<!-- <haxelib name="funk" /> -->
 	
+<java path="project/android" if="android" />
+<template path="templates" if="android" />
 	<!-- assets -->
 	<icon path="assets/nme.svg" />
 	<assets path="assets/img" rename="img" />
